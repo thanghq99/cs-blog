@@ -31,3 +31,9 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'stratum2';
+  /* font-weight: 400; */
+  src: url('../public/Stratum2WebRegular.woff');
+}
