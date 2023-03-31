@@ -12,6 +12,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        3: "3px",
+      },
       fontFamily: {
         sans: ["stratum2", ...defaultTheme.fontFamily.sans],
       },

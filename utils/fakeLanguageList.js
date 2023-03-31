@@ -1,0 +1,15 @@
+export default [
+  "English",
+  "Español - España (Spanish - Spain)",
+  "Français (French)",
+  "Italiano (Italian)",
+  "Deutsch (German)",
+  "Ελληνικά (Greek)",
+  "한국어 (Korean)",
+  "简体中文 (Simplified Chinese)",
+  "繁體中文 (Traditional Chinese)",
+  "Русский (Russian)",
+  "ไทย (Thai)",
+  "日本語 (Japanese)",
+  "Português (Portuguese)",
+];
