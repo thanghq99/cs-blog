@@ -37,3 +37,9 @@ a {
   /* font-weight: 400; */
   src: url('../public/Stratum2WebRegular.woff');
 }
+
+@layer utilities { 
+  .outline-custom {
+    outline: #ef4444 solid 2px;
+  }
+}

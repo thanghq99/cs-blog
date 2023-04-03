@@ -1,5 +1,5 @@
 DashboardLayout;
-import DashboardLayout from "@/components/layout/DashboardLayout";
+import DashboardLayout from "@/components/layout/DasboardLayout";
 import React from "react";
 
 function Users() {

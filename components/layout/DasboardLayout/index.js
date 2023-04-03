@@ -1,9 +1,14 @@
+// "use client";
+
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
 import getLastPathPartition from "@/utils/getLastPathPartition";
 import capitalizeFirstLetter from "@/utils/capitalizeFirstLetter";
-import Link from "next/link";
+import { SidebarProvider } from "@/contexts/siderbarContext";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import DashboardMainContent from "./DashboardMainContent";
 
 function DashboardLayout({ children }) {
   const router = useRouter();
@@ -19,20 +24,14 @@ function DashboardLayout({ children }) {
         <title>{title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <main>
-        <div className="flex space-x-1">
-          <Link href="/dashboard/news" className="border-2 p-1">
-            News
-          </Link>
-          <Link href="/dashboard/updates" className="border-2 p-1">
-            Updates
-          </Link>
-          <Link href="/dashboard/users" className="border-2 p-1">
-            Users
-          </Link>
-        </div>
-        {children}
+      <main className="">
+        <SidebarProvider>
+          <Header />
+          <Sidebar />
+          <DashboardMainContent children={children} />
+        </SidebarProvider>
       </main>
+      <div id="react-modals" />
     </>
   );
 }
