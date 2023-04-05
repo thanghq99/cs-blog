@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import SearchModal from "./SearchModal";
 import DropMenu from "./DropMenu";
 
-const { useSidebarContext } = require("@/contexts/siderbarContext");
+const { useSidebarContext } = require("@/src/contexts/siderbarContext");
 
 const SearchBar = () => {
   return (

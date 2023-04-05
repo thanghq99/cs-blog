@@ -1,4 +1,4 @@
-import BlogLayout from "@/components/layout/BlogLayout";
+import BlogLayout from "@/src/components/layout/BlogLayout";
 import React from "react";
 
 function News() {

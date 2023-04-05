@@ -1,8 +1,11 @@
-import DashboardLayout from "@/components/layout/DasboardLayout";
+import NewsList from "@/src/components/dashboard/news/NewsList";
+import DashboardLayout from "@/src/components/layout/DasboardLayout";
 import React from "react";
 
 function News() {
-  return <div>News</div>;
+  return <>
+  <NewsList />
+  </>;
 }
 
 export default News;

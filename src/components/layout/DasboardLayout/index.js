@@ -3,9 +3,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import getLastPathPartition from "@/utils/getLastPathPartition";
-import capitalizeFirstLetter from "@/utils/capitalizeFirstLetter";
-import { SidebarProvider } from "@/contexts/siderbarContext";
+import getLastPathPartition from "@/src/utils/getLastPathPartition";
+import capitalizeFirstLetter from "@/src/utils/capitalizeFirstLetter";
+import { SidebarProvider } from "@/src/contexts/siderbarContext";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import DashboardMainContent from "./DashboardMainContent";

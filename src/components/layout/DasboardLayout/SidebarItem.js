@@ -1,4 +1,4 @@
-import { useSidebarContext } from "@/contexts/siderbarContext";
+import { useSidebarContext } from "@/src/contexts/siderbarContext";
 import { useRouter } from "next/router";
 
 export default function SidebarItem({ item }) {

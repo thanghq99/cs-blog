@@ -1,4 +1,4 @@
-import CS2Layout from "@/components/layout/CS2Layout";
+import CS2Layout from "@/src/components/layout/CS2Layout";
 import React from "react";
 
 function CS2() {

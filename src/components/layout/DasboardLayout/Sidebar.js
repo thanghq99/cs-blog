@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import sidebarConfig from "./sidebarConfig";
 import SidebarItem from "./SidebarItem";
 
-const { useSidebarContext } = require("@/contexts/siderbarContext");
+const { useSidebarContext } = require("@/src/contexts/siderbarContext");
 
 const LeftArrow = ({ open, ...props }) => (
   <button {...props}>

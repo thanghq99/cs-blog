@@ -1,11 +1,11 @@
 import Head from "next/head";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import getLastPathPartition from "@/utils/getLastPathPartition";
-import capitalizeFirstLetter from "@/utils/capitalizeFirstLetter";
+import getLastPathPartition from "@/src/utils/getLastPathPartition";
+import capitalizeFirstLetter from "@/src/utils/capitalizeFirstLetter";
 import Image from "next/image";
 import Link from "next/link";
-import fakeLanguageList from "@/utils/fakeLanguageList";
+import fakeLanguageList from "@/src/utils/fakeLanguageList";
 import Footer from "./Footer";
 
 function LanguageSelectItem({ language }) {

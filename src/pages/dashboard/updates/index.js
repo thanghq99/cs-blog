@@ -1,4 +1,4 @@
-import DashboardLayout from "@/components/layout/DasboardLayout";
+import DashboardLayout from "@/src/components/layout/DasboardLayout";
 import React from "react";
 
 function Updates() {

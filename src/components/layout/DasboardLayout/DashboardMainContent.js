@@ -1,4 +1,4 @@
-const { useSidebarContext } = require("@/contexts/siderbarContext");
+const { useSidebarContext } = require("@/src/contexts/siderbarContext");
 
 export default function DashboardMainContent({ children }) {
   const { open } = useSidebarContext();
