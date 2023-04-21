@@ -5,6 +5,7 @@ import dbConnect from "@/src/db/mongooseConnector";
 import NewsContentLayout from "@/src/components/layout/NewsContentLayout";
 import BackToNewsButton from "@/src/components/news/BackToNewsButton";
 import { displayDate } from "@/src/utils/displayDate";
+import Head from "next/head";
 
 const CustomEditor = dynamic(
   () => import("@/src/components/sharedComponents/CustomEditor"),
@@ -51,6 +52,10 @@ export async function getServerSideProps(context) {
 function News(props) {
   return (
     <div className="relative min-h-screen ">
+      <Head>
+        <title>{props.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {/* backgound image */}
       <div
         className="w-full h-[500px] -mb-72"
