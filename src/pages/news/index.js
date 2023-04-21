@@ -6,9 +6,14 @@ import useNewsList from "@/src/hooks/useNewsList";
 import React, { useState } from "react";
 
 const DEFAULT_PAGE_SIZE = 15;
+const PUBLISH_STATUS = true;
 function News() {
   const [page, setPage] = useState(0);
-  const { data, isLoading } = useNewsList(page, DEFAULT_PAGE_SIZE, true);
+  const { data, isLoading } = useNewsList(
+    page,
+    DEFAULT_PAGE_SIZE,
+    PUBLISH_STATUS
+  );
   return isLoading ? (
     <LoadingSection />
   ) : (

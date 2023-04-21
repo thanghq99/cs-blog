@@ -2,8 +2,16 @@ import useNewsList from "@/src/hooks/useNewsList";
 import React from "react";
 import NewsItem from "./NewsItem";
 
+const FIRST_PAGE = 0;
+const DEFAULT_PAGE_SIZE = 3;
+const PUBLISH_STATUS = true;
+
 function LastestNews() {
-  const { data, isLoading } = useNewsList(0, 3); //lastest 3 news posts
+  const { data, isLoading } = useNewsList(
+    FIRST_PAGE,
+    DEFAULT_PAGE_SIZE,
+    PUBLISH_STATUS
+  ); //lastest 3 news published posts
   return isLoading ? (
     "Loading"
   ) : (
