@@ -9,6 +9,8 @@ import { SidebarProvider } from "@/src/contexts/siderbarContext";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import DashboardMainContent from "./DashboardMainContent";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function DashboardLayout({ children }) {
   const router = useRouter();
@@ -30,6 +32,7 @@ function DashboardLayout({ children }) {
           <Sidebar />
           <DashboardMainContent children={children} />
         </SidebarProvider>
+        <ToastContainer position="top-center" autoClose={3000} />
       </main>
       <div id="react-modals" />
     </>

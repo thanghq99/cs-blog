@@ -28,7 +28,7 @@ const MenuActions = ({ closeMenu, menuActionsRef, ...props }) => {
       className="absolute right-0 border min-w-[130px] border-slate-800 transition"
       {...props}
     >
-      <li className="flex whitespace-nowrap px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer">
+      <li className="flex whitespace-nowrap bg-[#090d13] px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -45,7 +45,7 @@ const MenuActions = ({ closeMenu, menuActionsRef, ...props }) => {
         </svg>
         Profile
       </li>
-      <li className="flex whitespace-nowrap  px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer">
+      <li className="flex whitespace-nowrap bg-[#090d13] px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
