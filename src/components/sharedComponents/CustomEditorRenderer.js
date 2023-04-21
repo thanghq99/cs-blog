@@ -1,10 +1,10 @@
 import React from "react";
-const editorJsHtml = require("editorjs-html");
-const EditorJsToHtml = editorJsHtml();
+const edjsHTML = require("editorjs-html");
+const edjsParser = edjsHTML();
 
 const EditorJsRenderer = ({ content }) => {
-  console.log("content", content);
-  const html = EditorJsToHtml.parse(content);
+  const html = edjsParser.parse(JSON.parse(content));
+  console.log("updated");
   return (
     <div className="prose max-w-full" key={content.time}>
       {html.map((item, index) => {

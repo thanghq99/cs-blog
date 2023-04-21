@@ -1,80 +1,12 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import getLastPathPartition from "@/src/utils/getLastPathPartition";
 import capitalizeFirstLetter from "@/src/utils/capitalizeFirstLetter";
 import Image from "next/image";
 import Link from "next/link";
-import fakeLanguageList from "@/src/utils/fakeLanguageList";
 import Footer from "./Footer";
-
-function LanguageSelectItem({ language }) {
-  return (
-    <div className="px-2 normal-case text-white opacity-60 hover:bg-white/60 hover:text-black hover:opacity-100 hover:cursor-pointer transition">
-      {language}
-    </div>
-  );
-}
-
-function LanguageSelector({}) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div
-      className="relative flex hover:cursor-pointer"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <Image
-        src="/language.svg"
-        width={12}
-        height={12}
-        alt="language icon"
-      ></Image>
-      <span className="relative m-2 opacity-60 uppercase tracking-widest text-sm">
-        Select language
-      </span>
-      <Image
-        src="/carat_white.svg"
-        width={12}
-        height={12}
-        alt="language icon"
-      ></Image>
-      {open && (
-        <div className="absolute top-full border border-gray-400 bg-[#222]">
-          {fakeLanguageList.map((language, index) => (
-            <LanguageSelectItem key={index} language={language} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function PageHeader() {
-  return (
-    <div className="absolute w-full flex px-8 justify-between">
-      <div className="flex items-center">
-        <p className="uppercase flex items-center opacity-60">Monthy players</p>
-        <p className="font-bold ml-1">24,105,628</p>
-      </div>
-      <Link href="/">
-        <div className="h-[70px] w-[300px] mx-12 my-[5px] opacity-80 hover:opacity-100 flex items-center">
-          <Image
-            src="/logo_cs_full.svg"
-            width={300}
-            height={70}
-            alt="Counter-Strike logo"
-          ></Image>
-        </div>
-
-        {/* <div className="w-[300px] h-[70px] bg-[url('/logo_cs_full.svg')]"></div> */}
-      </Link>
-      <div className="relative flex items-center">
-        <LanguageSelector />
-      </div>
-    </div>
-  );
-}
+import PageHeader from "./PageHeader";
 
 function CS2Bumper() {
   const router = useRouter();
@@ -88,7 +20,7 @@ function CS2Bumper() {
       onClick={gotoCS2Page}
     >
       <div className="flex flex-col justify-center pl-[40%]">
-        <p className="ml-10 mb-2 font-bold text-xl tracking-wide uppercase text-[#1e202f] self-start">
+        <p className="ml-10 mb-2 font-bold text-xl tracking-wide uppercase text-[#1e202f] self-start opacity-0 animate-delayAppearance">
           Learn more about
         </p>
         <Image
@@ -96,8 +28,9 @@ function CS2Bumper() {
           width={450}
           height={70}
           alt="Counter-Strike 2 logo header"
+          className="animate-fadeInLeft"
         ></Image>
-        <div className="mt-5 mr-11 self-end bg-[#1e202f] px-5 py-1 skew-x-[-20deg]">
+        <div className="mt-5 mr-11 self-end bg-[#1e202f] px-5 py-1 skew-x-[-20deg] opacity-0 animate-delayAppearance">
           <p className="font-bold text-xl tracking-widest uppercase text-[#e0881e] skew-x-[20deg]">
             Limited test
           </p>
@@ -126,8 +59,6 @@ function NavigationItem({ navigationItem }) {
     lastPathPartition === navigationItem.url.slice(1)
       ? "bg-[#313131] border-t-[#646566]"
       : "bg-[#222] text-[#828282] border-t-[#222]";
-
-  console.log(lastPathPartition);
   return (
     <Link href={navigationItem.url} legacyBehavior>
       <a

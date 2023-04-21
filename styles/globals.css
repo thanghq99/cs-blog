@@ -45,6 +45,40 @@ a {
   }
 }
 
+.codex-editor {
+  z-index: 0;
+}
+
+.ce-block__content,
+.ce-toolbar__content {
+  /* max-width: calc(100% - 120px) !important; */
+  width: 100%;
+  max-width: 1000px;
+  padding: 0px 50px;
+  font-size: 24px;
+}
+.cdx-block {
+  max-width: 100% !important;
+}
+
+.codex-editor__redactor {
+  padding-bottom: 38px !important;
+}
+
+.ce-block__content {
+  padding-bottom: 38px !important;
+}
+
+.image-tool__caption {
+  text-align: center;
+  display: none;
+}
+
+.image-tool__image {
+  display: flex;
+  justify-content: center;
+}
+
 h1.ce-header {
   @apply font-sans text-3xl font-bold;
 }

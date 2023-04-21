@@ -3,35 +3,28 @@ import EditorJS from "@editorjs/editorjs";
 import customEditorTools from "./CustomEditorTools";
 import debounce from "lodash/debounce";
 
-const DEFAULT_INITIAL_DATA = () => {
-  return {
-    time: new Date().getTime(),
-    blocks: [
-      {
-        type: "paragraph",
-        data: {
-          text: "Start writing here !!!",
-          level: 1,
-        },
-      },
-    ],
-  };
-};
-
 const EDITTOR_HOLDER_ID = "editorjs";
 
-const Editor = ({ content, setContent }) => {
+const Editor = ({ content, setContent, isReadOnly }) => {
   //add a reference to editor
   const ref = useRef();
 
   //initialize editorjs
   useEffect(() => {
+    const initDefaultData = () => {
+      const initData = {
+        time: new Date().getTime(),
+        blocks: [],
+      };
+      setContent(JSON.stringify(initData));
+      return initData;
+    };
     //initialize editor if we don't have a reference
     if (!ref.current) {
       const editor = new EditorJS({
         holder: EDITTOR_HOLDER_ID,
         tools: customEditorTools,
-        data: content === "" ? DEFAULT_INITIAL_DATA() : JSON.parse(content),
+        data: content === "" ? initDefaultData() : JSON.parse(content),
         onChange: debounce(async function () {
           try {
             const output = await editor.save();
@@ -39,8 +32,9 @@ const Editor = ({ content, setContent }) => {
             console.log(newContent);
             setContent(newContent);
           } catch (err) {}
-        }, 2000),
+        }, 0), //need a new approach for this later
         hideToolbar: false,
+        readOnly: isReadOnly,
       });
       ref.current = editor;
     }
