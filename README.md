@@ -24,7 +24,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ## Description
 
-A clone of [counter-strike.net](www.counter-strike.net) with content management.
+A clone of [counter-strike.net](https://www.counter-strike.net) with content management.
 - clone part: /, /news, /updates, /cs2
 - extra development: /dashboard/*
 
