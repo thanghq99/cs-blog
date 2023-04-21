@@ -28,6 +28,8 @@ A clone of [counter-strike.net](https://www.counter-strike.net) with content man
 - clone part: /, /news, /updates, /cs2
 - extra development: /dashboard/*
 
+Deployed site: cs-blog-omega.vercel.app
+
 ## Tools
 
 - Next.js
