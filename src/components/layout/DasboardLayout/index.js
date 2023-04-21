@@ -30,7 +30,7 @@ function DashboardLayout({ children }) {
         <SidebarProvider>
           <Header />
           <Sidebar />
-          <DashboardMainContent children={children} />
+          <DashboardMainContent>{children}</DashboardMainContent>
         </SidebarProvider>
         <ToastContainer position="top-center" autoClose={3000} />
       </main>
