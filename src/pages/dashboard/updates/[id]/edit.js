@@ -109,7 +109,7 @@ function EditUpdates(props) {
         </>
       ) : (
         <div className="h-[50vh] text-4xl flex justify-center items-center">
-          <p>Can not find this updates post</p>
+          <p>Can not find this update post</p>
         </div>
       )}
     </div>

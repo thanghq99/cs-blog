@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../sharedComponents/Button";
 import { toast } from "react-toastify";
-import useUpdatesList from "@/src/hooks/useUpdatesList";
+import useUsersList from "@/src/hooks/useUsersList";
 
 const ActionIcon = ({ toggleButtonRef, ...props }) => {
   return (
@@ -25,14 +25,14 @@ const ActionIcon = ({ toggleButtonRef, ...props }) => {
   );
 };
 
-const TableAction = ({ update, page, pageSize }) => {
+const TableAction = ({ user, page, pageSize }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const toggleButtonRef = useRef();
   const menuActionsRef = useRef();
-  const { mutate } = useUpdatesList(page, pageSize);
+  const { mutate } = useUsersList(page, pageSize);
 
-  const id = update._id.toString();
+  const id = user._id.toString();
 
   const closeMenu = () => setOpen(false);
 
@@ -55,12 +55,34 @@ const TableAction = ({ update, page, pageSize }) => {
   }, [menuActionsRef]);
   const toggleOpen = () => setOpen((open) => !open);
 
+  const toggleAdminStatus = async (user) => {
+    try {
+      const newAdminStatus = !user.isAdmin;
+      const fetchResponse = await fetch(`/api/users/${id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ isAdmin: newAdminStatus }),
+      });
+      const fetchData = await fetchResponse.json();
+      mutate();
+      closeMenu();
+      if (fetchData.success === false) toast.error("An error occurs");
+      else toast.success("Publishing status is updated");
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurs");
+    }
+  };
+
   const handleEdit = () => {
-    router.push(`/dashboard/updates/${id}/edit`);
+    router.push(`/dashboard/users/${id}/edit`);
   };
   const handleRemove = async () => {
     try {
-      const fetchResponse = await fetch(`/api/updates/${id}`, {
+      const fetchResponse = await fetch(`/api/users/${id}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",
@@ -70,9 +92,11 @@ const TableAction = ({ update, page, pageSize }) => {
       const fetchData = await fetchResponse.json();
       mutate();
       closeMenu();
-      if (fetchResponse.success === false) toast.error("An error occurs");
+      if (fetchData.success === false) toast.error("An error occurs");
       else toast.success("News post has been removed");
-    } catch (error) {}
+    } catch (error) {
+      toast.error("An error occurs");
+    }
   };
 
   return (
@@ -83,6 +107,11 @@ const TableAction = ({ update, page, pageSize }) => {
           ref={menuActionsRef}
           className={`flex absolute top-8 min-w-[60px] bg-slate-600 flex-col z-10`}
         >
+          <Button
+            title={user.isAdmin ? "Grant non-admin" : "Grant admin"}
+            widthFull
+            action={() => toggleAdminStatus(user)}
+          />
           <Button title="Edit" widthFull action={handleEdit} />
           <Button title="Remove" widthFull action={handleRemove} />
         </div>

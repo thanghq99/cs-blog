@@ -49,7 +49,7 @@ function Updates(props) {
         </>
       ) : (
         <div className="w-full h-28 flex justify-center items-center">
-          <p>No updates yet, click the button above to create some.</p>
+          <p>No update yet, click the button above to create some.</p>
         </div>
       )}
     </div>
