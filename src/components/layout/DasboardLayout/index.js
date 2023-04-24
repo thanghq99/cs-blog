@@ -9,10 +9,11 @@ import { SidebarProvider } from "@/src/contexts/siderbarContext";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import DashboardMainContent from "./DashboardMainContent";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useSession } from "next-auth/react";
+import LoadingSection from "../../sharedComponents/LoadingSection";
 
 function DashboardLayout({ children }) {
+  const { data, status } = useSession();
   const router = useRouter();
   const lastPathPartition = getLastPathPartition(router.pathname);
   const title =
@@ -20,23 +21,28 @@ function DashboardLayout({ children }) {
       ? "Dashboard"
       : `Dashboard | ${capitalizeFirstLetter(lastPathPartition)}`;
 
-  return (
-    <>
-      <Head>
-        <title>{title}</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <main className="">
-        <SidebarProvider>
-          <Header />
-          <Sidebar />
-          <DashboardMainContent>{children}</DashboardMainContent>
-        </SidebarProvider>
-        <ToastContainer position="top-center" autoClose={3000} />
-      </main>
-      <div id="react-modals" />
-    </>
-  );
+  if (status === "loading") return <LoadingSection />;
+  if (status === "unauthenticated") router.replace("/sign-in");
+  if (status === "authenticated")
+    return (
+      <>
+        <Head>
+          <title>{title}</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+        <main className="">
+          <SidebarProvider>
+            <Header />
+            <Sidebar />
+            <DashboardMainContent>{children}</DashboardMainContent>
+          </SidebarProvider>
+        </main>
+        <div id="react-modals" />
+      </>
+    );
 }
 
 export default DashboardLayout;

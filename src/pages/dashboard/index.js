@@ -54,7 +54,7 @@ function Dashboard() {
       setQuote(roundStartQuotes[index]);
     };
     getRandomQuote();
-  });
+  }, []);
   return (
     <div className="p-4">
       <PageHeader title={`"${quote}"`} />

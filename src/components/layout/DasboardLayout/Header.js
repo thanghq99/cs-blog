@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
 import SearchModal from "./SearchModal";
 import DropMenu from "./DropMenu";
+import { useSession } from "next-auth/react";
 
 const { useSidebarContext } = require("@/src/contexts/siderbarContext");
 
@@ -20,7 +20,7 @@ const NameDisplayer = ({ name }) => <p className="mr-2">Welcome, {name}!</p>;
 
 export default function Header() {
   const { open } = useSidebarContext();
-
+  const { data } = useSession();
   return (
     <div
       className={`fixed right-0 top-0 z-40 bg-[#090d13] h-16 text-white flex justify-between items-center px-4 ${
@@ -31,7 +31,7 @@ export default function Header() {
       <SearchBar />
       {/* account actions */}
       <div className="flex">
-        <NameDisplayer name={"Gabe Newell"} />
+        <NameDisplayer name={data.user.alias} />
         <DropMenu />
       </div>
     </div>

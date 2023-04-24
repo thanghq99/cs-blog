@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
 const ChevronDown = ({ open, toggleButtonRef, ...props }) => (
@@ -45,7 +46,10 @@ const MenuActions = ({ closeMenu, menuActionsRef, ...props }) => {
         </svg>
         Profile
       </li>
-      <li className="flex whitespace-nowrap bg-[#090d13] px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer">
+      <li
+        className="flex whitespace-nowrap bg-[#090d13] px-2 py-1 transition hover:bg-red-500 hover:text-slate-900 hover:cursor-pointer"
+        onClick={signOut}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
