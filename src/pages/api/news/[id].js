@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       break;
     case "DELETE":
       try {
-        const deletedNews = await News.findOneAndDelete(id);
+        const deletedNews = await News.findByIdAndDelete(id);
         if (!deletedNews) res.status(200).json({ success: false });
         res.status(200).json({ success: true, data: deletedNews });
       } catch (error) {

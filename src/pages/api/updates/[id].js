@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       break;
     case "DELETE":
       try {
-        const deletedUpdate = await Updates.findOneAndDelete(id);
+        const deletedUpdate = await Updates.findByIdAndDelete(id);
         if (!deletedUpdate) res.status(200).json({ success: false });
         res.status(200).json({ success: true, data: deletedUpdate });
       } catch (error) {

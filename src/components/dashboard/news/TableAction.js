@@ -92,7 +92,7 @@ const TableAction = ({ news, page, pageSize }) => {
       const fetchData = await fetchResponse.json();
       mutate();
       closeMenu();
-      if (fetchResponse.success === false) toast.error("An error occurs");
+      if (fetchData.success === false) toast.error("An error occurs");
       else toast.success("News post has been removed");
     } catch (error) {}
   };
