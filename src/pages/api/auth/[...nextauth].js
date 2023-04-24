@@ -34,10 +34,10 @@ export const authOptions = {
   session: {
     // Set to jwt in order to CredentialsProvider works properly
     strategy: "jwt",
-    maxAge: 60,
+    maxAge: 8 * 60 * 60,
   },
   jwt: {
-    maxAge: 60,
+    maxAge: 8 * 60 * 60, //default: session.maxAge
   },
   pages: {
     signIn: "/auth/signin",
