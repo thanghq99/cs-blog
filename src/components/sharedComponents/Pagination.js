@@ -57,6 +57,8 @@ const Pagination = ({
   };
   const confirmChangePageSize = () => {
     setPageSize(tempPageSize);
+    //make sure to set to first page when changing page size (eg: there's no page 2 when page size is 10 and total count is <=10)
+    setPage(0);
   };
   return (
     <>
