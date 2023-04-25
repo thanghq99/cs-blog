@@ -31,17 +31,20 @@ function SignIn() {
         body: JSON.stringify({ email: input.email }),
       });
       console.log(input.email);
+      const data = await res.json();
       if (res.ok) {
-        const data = await res.json();
+        console.log(data);
         setStatus("loaded");
         toast.success(`An email was sent to ${input.email}`);
       } else {
+        console.log(data);
         setStatus("null");
         toast.error(`Email not registed`);
       }
     } catch (error) {
       setStatus("null");
       toast.error(`An error occurred`);
+      console.log(error);
     }
   };
   const handleSignIn = async () => {
