@@ -22,14 +22,21 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Description
 
-To learn more about Next.js, take a look at the following resources:
+A clone of [counter-strike.net](https://www.counter-strike.net) with content management.
+- clone part: /, /news, /updates, /cs2
+- extra development: /dashboard/*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deployed site: cs-blog-omega.vercel.app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tools
+
+- Next.js
+- Mongoose
+- Tailwindcss
+- SWR
+- Editor.js
 
 ## Deploy on Vercel
 
