@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import LoadingSection from "../components/sharedComponents/LoadingSection";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 function SignIn() {
   const [status, setStatus] = useState("null"); // null, loading, loaded
@@ -70,15 +71,21 @@ function SignIn() {
       />
       <div className="container mx-auto h-full flex justify-center items-center">
         <div className="relative w-full bg-[#181a21] px-4 py-3 md:w-[700px]">
-          <h1
-            className="absolute -top-10 text-3xl uppercase"
-            style={{
-              textShadow:
-                "0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.08)",
-            }}
-          >
-            Sign in
-          </h1>
+          <div className="absolute -top-10 -ml-3 w-full flex items-center justify-between">
+            <h1
+              className="ml-3 text-3xl uppercase"
+              style={{
+                textShadow:
+                  "0 15px 30px rgba(0,0,0,0.11), 0 5px 15px rgba(0,0,0,0.08)",
+              }}
+            >
+              Sign in
+            </h1>
+            <Link href="fake-user-for-testing">
+              Add new user (for testing purpose)
+            </Link>
+          </div>
+
           <p className="text-xl uppercase text-red-500">Sign in with email</p>
           <input
             name="email"

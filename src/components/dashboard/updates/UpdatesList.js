@@ -16,7 +16,7 @@ function UpdatesList({ updatesList, page, pageSize }) {
           </th>
           <th
             scope="col"
-            className="px-6 py-4 w-1/12 border border-gray-400 text-center"
+            className="px-6 py-4 w-1/4 md:w-1/6 lg:w-2/12 border border-gray-400 text-center"
           >
             Action
           </th>

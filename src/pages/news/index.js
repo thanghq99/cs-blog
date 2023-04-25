@@ -17,7 +17,7 @@ function News() {
   return isLoading ? (
     <LoadingSection />
   ) : (
-    <div className="container mx-auto xl:max-w-[1200px] flex flex-col lg:pt-14">
+    <div className="container mx-auto xl:max-w-[1200px] flex flex-col pt-6 md:pt-14">
       {data.data.map((news, index) => (
         <NewsItem key={index} news={news} />
       ))}

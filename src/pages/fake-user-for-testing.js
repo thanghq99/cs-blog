@@ -1,12 +1,10 @@
-import DashboardLayout from "@/src/components/layout/DasboardLayout";
-import PageHeader from "@/src/components/sharedComponents/PageHeader";
 import Button from "@/src/components/sharedComponents/Button";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
-import AdminRoute from "@/src/components/sharedComponents/AdminRoute";
+import PageHeader from "../components/sharedComponents/PageHeader";
 
-function CreateUsers(props) {
+function FakeUserCreation(props) {
   const router = useRouter();
   const [input, setInput] = useState({
     email: "",
@@ -46,8 +44,10 @@ function CreateUsers(props) {
         let fetchResponse = await fetchData.json();
         console.log(fetchResponse);
         if (fetchResponse.success === false) toast.error("An error occurs");
-        else toast.success("Users is successfully created");
-        router.push("/dashboard/users");
+        else {
+          toast.success("Users is successfully created");
+          router.push("/sign-in");
+        }
       } catch (error) {
         console.log(error);
         toast.error("An error occurs");
@@ -56,12 +56,12 @@ function CreateUsers(props) {
   };
 
   return (
-    <div className="p-4">
+    <div className="min-h-screen bg-slate-800 p-8 text-white">
       <PageHeader
         title="Create a new user"
         button={<Button title="Create" action={handleSubmit} />}
       />
-      <div>
+      <div className="">
         <div className="text-center bolder text-lg">
           {errors.map((e, index) => (
             <p key={index}>{e}</p>
@@ -106,12 +106,4 @@ function CreateUsers(props) {
   );
 }
 
-export default CreateUsers;
-
-CreateUsers.getLayout = function getLayout(page) {
-  return (
-    <DashboardLayout>
-      <AdminRoute>{page}</AdminRoute>
-    </DashboardLayout>
-  );
-};
+export default FakeUserCreation;

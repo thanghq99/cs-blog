@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Users from "@/src/db/models/Users";
 import { useRouter } from "next/router";
 import dbConnect from "@/src/db/mongooseConnector";
+import AdminRoute from "@/src/components/sharedComponents/AdminRoute";
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
@@ -118,7 +119,7 @@ function EditUsers(props) {
                 />
               </div>
               <div className="w-full">
-                <h2 className="text-lg text-white">Alias</h2>
+                <h2 className="text-lg text-white">Is admin?</h2>
                 <select
                   name="isAdmin"
                   className="w-full h-10 px-4 py-2 rounded-none leading-6 md:block focus:outline-custom"
@@ -144,5 +145,9 @@ function EditUsers(props) {
 export default EditUsers;
 
 EditUsers.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
+  return (
+    <DashboardLayout>
+      <AdminRoute>{page}</AdminRoute>
+    </DashboardLayout>
+  );
 };

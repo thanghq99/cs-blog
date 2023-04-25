@@ -8,7 +8,7 @@ function NewsItem({ news }) {
   return (
     <Link href={`/news/${news._id}`}>
       <div className="relative h-[275px] w-full flex transition ease-in-out duration-200 hover:scale-105">
-        <div className="relative h-full w-2/5">
+        <div className="relative h-full w-2/5 hidden md:block">
           <Image
             alt="news preview image"
             src={news.thumbnail}
@@ -16,8 +16,16 @@ function NewsItem({ news }) {
             className="object-cover overflow-hidden"
           />
         </div>
-        <div className="flex flex-col justify-center w-3/5 ml-11 font-medium text-neutral-400">
-          <div className="flex space-x-3 mb-1 text-gray-400/80">
+        <div className="flex flex-col justify-center w-full px-3 md:px-0 md:w-3/5 md:ml-11 font-medium text-neutral-400">
+          <div className="absolute h-full w-full opacity-20 md:hidden">
+            <Image
+              alt="news preview image"
+              src={news.thumbnail}
+              fill
+              className="object-cover overflow-hidden -mx-3"
+            />
+          </div>
+          <div className="flex space-x-3 mb-1  text-gray-400/80 z-10">
             <p className="uppercase tracking-widest">
               {displayDate(news.date)}
             </p>
@@ -25,7 +33,7 @@ function NewsItem({ news }) {
           </div>
 
           <p className="text-3xl capitalize text-white mr-2">{news.title}</p>
-          <p className="text-xl  my-2">{news.description}</p>
+          <p className="text-xl my-2">{news.description}</p>
           <div className="group w-full flex items-center">
             <span className="font-extrabold text-lg uppercase tracking-widest transition ease-in-out duration-200 group-hover:text-sky-500/80">
               Read more

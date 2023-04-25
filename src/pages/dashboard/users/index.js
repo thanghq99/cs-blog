@@ -7,6 +7,7 @@ import PageHeader from "@/src/components/sharedComponents/PageHeader";
 import useUsersList from "@/src/hooks/useUsersList";
 import Pagination from "@/src/components/sharedComponents/Pagination";
 import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
+import AdminRoute from "@/src/components/sharedComponents/AdminRoute";
 
 const DEFAULT_PAGE_SIZE = 5;
 function Users(props) {
@@ -55,5 +56,9 @@ function Users(props) {
 export default Users;
 
 Users.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
+  return (
+    <DashboardLayout>
+      <AdminRoute>{page}</AdminRoute>
+    </DashboardLayout>
+  );
 };
