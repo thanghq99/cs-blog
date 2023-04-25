@@ -5,8 +5,10 @@ import Image from "next/image";
 import LoadingSection from "../components/sharedComponents/LoadingSection";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function SignIn() {
+  const router = useRouter();
   const [status, setStatus] = useState("null"); // null, loading, loaded
   const [input, setInput] = useState({
     email: "",
@@ -52,13 +54,21 @@ function SignIn() {
     if (input.token === "") toast.error("Token is required");
     try {
       setStatus("loading");
-      signIn("credentials", {
+      const result = await signIn("credentials", {
         email: input.email,
         token: input.token,
-        callbackUrl: "/dashboard",
+
+        redirect: false,
       });
+      if (result.ok) {
+        toast.success(`Sign in successfully`);
+        router.push("/dashboard");
+      } else {
+        toast.error(`Token is not valid`);
+        setStatus("null");
+      }
     } catch (error) {
-      console.log(error);
+      alert(JSON.stringify(error));
       setStatus("null");
       toast.error(`An error occurred`);
     }
