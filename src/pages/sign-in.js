@@ -57,15 +57,19 @@ function SignIn() {
       const result = await signIn("credentials", {
         email: input.email,
         token: input.token,
-
         redirect: false,
       });
+      console.log(result);
       if (result.ok) {
         toast.success(`Sign in successfully`);
         router.push("/dashboard");
       } else {
         toast.error(`Token is not valid`);
         setStatus("null");
+        setInput({
+          email: "",
+          token: "",
+        });
       }
     } catch (error) {
       alert(JSON.stringify(error));
