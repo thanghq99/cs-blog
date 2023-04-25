@@ -78,7 +78,7 @@ function News(props) {
         <BackToNewsButton />
         {/* title */}
         <p
-          className="mt-10 mb-8 text-5xl text-white font-black"
+          className="mt-10 mb-8 px-4 text-center text-5xl text-white font-black"
           style={{ textShadow: "0px 0px 10px #000, 0px 0px 5px #000" }}
         >
           {props.title}

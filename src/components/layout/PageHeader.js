@@ -47,7 +47,7 @@ function LanguageSelector({}) {
 
 function PageHeader() {
   return (
-    <div className="absolute z-10 w-full flex flex-col px-8 justify-center items-center pt-3 text-sm md:text-base md:flex-row md:justify-between">
+    <div className="absolute z-50 w-full flex flex-col px-8 justify-center items-center pt-3 text-sm md:text-base md:flex-row md:justify-between">
       <div className="flex items-center">
         <p className="uppercase flex items-center opacity-60">Monthy players</p>
         <p className="font-bold ml-1">24,105,628</p>
