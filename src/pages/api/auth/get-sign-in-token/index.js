@@ -24,7 +24,7 @@ export default async function handler(req, res) {
             .status(404)
             .json({ success: false, data: "No user with given email found." });
         const signInToken = jwt.sign(
-          { email: email },
+          { email: email, requestedAt: Date.now() },
           process.env.EMAIL_SECRET,
           {
             expiresIn: "5m",

@@ -19,8 +19,8 @@ function CS2Bumper() {
       className="flex justify-center h-[250px] w-[90%] max-w-[1200px] px-[50px] py-[20px] bg-[url('/bumper.png')] bg-cover bg-no-repeat bg-center transition duration-300 hover:scale-105 hover:brightness-[1.20] hover:cursor-pointer"
       onClick={gotoCS2Page}
     >
-      <div className="flex flex-col justify-center pl-[40%]">
-        <p className="ml-10 mb-2 font-bold text-xl tracking-wide uppercase text-[#1e202f] self-start opacity-0 animate-delayAppearance">
+      <div className="flex flex-col justify-center pl-[40%] text-sm sm:text-xl">
+        <p className="ml-2 sm:ml-10 mb-2 font-bold tracking-wide uppercase text-[#1e202f] self-start opacity-0 animate-delayAppearance">
           Learn more about
         </p>
         <Image
@@ -31,7 +31,7 @@ function CS2Bumper() {
           className="animate-fadeInLeft"
         ></Image>
         <div className="mt-5 mr-11 self-end bg-[#1e202f] px-5 py-1 skew-x-[-20deg] opacity-0 animate-delayAppearance">
-          <p className="font-bold text-xl tracking-widest uppercase text-[#e0881e] skew-x-[20deg]">
+          <p className="font-bold tracking-widest uppercase text-[#e0881e] skew-x-[20deg]">
             Limited test
           </p>
         </div>
@@ -72,8 +72,8 @@ function NavigationItem({ navigationItem }) {
 
 function Navigations() {
   return (
-    <div className="h-[100px] w-full pt-10 px-[14vw] border-b-[3px] border-b-[#313131]">
-      <div className="h-full w-[400px] flex justify-between">
+    <div className="h-[100px] w-full pt-10 px-8 sm:px-[14vw] border-b-[3px] border-b-[#313131]">
+      <div className="h-full w-full sm:w-[400px] flex justify-between">
         {navigationItems.map((navigationItem, index) => (
           <NavigationItem key={index} navigationItem={navigationItem} />
         ))}
