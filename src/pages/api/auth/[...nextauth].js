@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { toast } from "react-toastify";
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -14,8 +13,13 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
+        console.log(
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/sign-in-by-email`
+        );
         const res = await fetch(
-          "http://localhost:3000/api/auth/sign-in-by-email",
+          //PLEASE DO NOT THE CODE (please do not the cat):
+          // "http://localhost:3000/api/auth/sign-in-by-email", I HARD CODED THIS TO LOCALHOST AND WASTED HOURS TO FIND IT OUT
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/sign-in-by-email`,
           {
             method: "POST",
             body: JSON.stringify(credentials),
