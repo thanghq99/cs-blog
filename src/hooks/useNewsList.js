@@ -3,7 +3,13 @@ import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-function useNewsList(page, pageSize, publishable) {
+const DEFAULT_PAGE_SIZE = 5;
+
+function useNewsList(defaultPage, defaultPageSize, publishable) {
+  const [page, setPage] = useState(defaultPage || 0);
+  const [pageSize, setPageSize] = useState(
+    defaultPageSize || DEFAULT_PAGE_SIZE
+  );
   const { data, error, isLoading, isValidating, mutate } = useSWR(
     `/api/news?page=${page}&pageSize=${pageSize}&publishable=${publishable}`,
     fetcher
@@ -14,6 +20,10 @@ function useNewsList(page, pageSize, publishable) {
     isLoading,
     isValidating,
     mutate,
+    page,
+    pageSize,
+    setPage,
+    setPageSize,
   };
 }
 

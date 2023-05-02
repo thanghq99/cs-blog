@@ -1,8 +1,15 @@
+import { useState } from "react";
 import useSWR from "swr";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-function useUsersList(page, pageSize) {
+const DEFAULT_PAGE_SIZE = 5;
+
+function useUsersList(defaultPage, defaultPageSize) {
+  const [page, setPage] = useState(defaultPage || 0);
+  const [pageSize, setPageSize] = useState(
+    defaultPageSize || DEFAULT_PAGE_SIZE
+  );
   const { data, error, isLoading, isValidating, mutate } = useSWR(
     `/api/users?page=${page}&pageSize=${pageSize}`,
     fetcher
@@ -13,6 +20,10 @@ function useUsersList(page, pageSize) {
     isLoading,
     isValidating,
     mutate,
+    page,
+    pageSize,
+    setPage,
+    setPageSize,
   };
 }
 

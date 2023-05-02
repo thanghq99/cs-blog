@@ -2,9 +2,8 @@ import React from "react";
 import TableAction from "./TableAction";
 import PublishBadge from "./PublishBadge";
 
-function NewsList({ newList, page, pageSize }) {
+function NewsList({ newList, mutate, pageSize }) {
   const emptyRows = pageSize - newList.length;
-  console.log(pageSize);
 
   return (
     <table className="table-fixed w-full border-collapse border border-gray-200 text-left text-gray-400">
@@ -39,8 +38,7 @@ function NewsList({ newList, page, pageSize }) {
               <PublishBadge publishable={news.publishable} />
             </td>
             <td className="border border-gray-400 px-6 py-4 font-medium whitespace-nowrap text-white">
-              {/* pass page and pageSize to persit useSWR mutate bind key depends on page and pageSize */}
-              <TableAction news={news} page={page} pageSize={pageSize} />
+              <TableAction news={news} mutate={mutate} />
             </td>
           </tr>
         ))}

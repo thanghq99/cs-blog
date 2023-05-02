@@ -9,12 +9,10 @@ import Pagination from "@/src/components/sharedComponents/Pagination";
 import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
 import AdminRoute from "@/src/components/sharedComponents/AdminRoute";
 
-const DEFAULT_PAGE_SIZE = 5;
 function Users(props) {
   const router = useRouter();
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
-  const { data, isLoading } = useUsersList(page, pageSize);
+  const { data, isLoading, page, pageSize, setPage, setPageSize, mutate } =
+    useUsersList();
 
   const goToCreateANewUser = () => {
     router.push("/dashboard/users/create");
@@ -31,7 +29,12 @@ function Users(props) {
       />
       {data.data.length > 0 ? (
         <>
-          <UsersList usersList={data.data} page={page} pageSize={pageSize} />
+          <UsersList
+            usersList={data.data}
+            page={page}
+            pageSize={pageSize}
+            mutate={mutate}
+          />
           <div className="mt-4">
             <Pagination
               page={page}

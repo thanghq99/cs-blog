@@ -2,9 +2,8 @@ import React from "react";
 import TableAction from "./TableAction";
 import { displayDate } from "@/src/utils/displayDate";
 
-function UpdatesList({ updatesList, page, pageSize }) {
+function UpdatesList({ updatesList, mutate, pageSize }) {
   const emptyRows = pageSize - updatesList.length;
-  console.log(pageSize);
 
   return (
     <table className="table-fixed w-full border-collapse border border-gray-200 text-left text-gray-400">
@@ -30,8 +29,7 @@ function UpdatesList({ updatesList, page, pageSize }) {
               {displayDate(update.date)}
             </td>
             <td className="border border-gray-400 px-6 py-4 font-medium whitespace-nowrap text-white">
-              {/* pass page and pageSize to persit useSWR mutate bind key depends on page and pageSize */}
-              <TableAction update={update} page={page} pageSize={pageSize} />
+              <TableAction update={update} mutate={mutate} />
             </td>
           </tr>
         ))}

@@ -3,12 +3,15 @@ import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
 import Pagination from "@/src/components/sharedComponents/Pagination";
 import UpdateItem from "@/src/components/updates/UpdateItem";
 import useUpdatesList from "@/src/hooks/useUpdatesList";
-import React, { useState } from "react";
+import React from "react";
 
 const DEFAULT_PAGE_SIZE = 15;
+const DEFAULT_PAGE = 0;
 function Updates() {
-  const [page, setPage] = useState(0);
-  const { data, isLoading } = useUpdatesList(page, DEFAULT_PAGE_SIZE);
+  const { data, isLoading, page, setPage } = useUpdatesList(
+    DEFAULT_PAGE,
+    DEFAULT_PAGE_SIZE
+  );
   return isLoading ? (
     <LoadingSection />
   ) : (

@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../sharedComponents/Button";
 import { toast } from "react-toastify";
-import useUpdatesList from "@/src/hooks/useUpdatesList";
 
 const ActionIcon = ({ toggleButtonRef, ...props }) => {
   return (
@@ -25,12 +24,11 @@ const ActionIcon = ({ toggleButtonRef, ...props }) => {
   );
 };
 
-const TableAction = ({ update, page, pageSize }) => {
+const TableAction = ({ update, mutate }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const toggleButtonRef = useRef();
   const menuActionsRef = useRef();
-  const { mutate } = useUpdatesList(page, pageSize);
 
   const id = update._id.toString();
 

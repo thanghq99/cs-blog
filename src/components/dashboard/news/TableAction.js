@@ -1,4 +1,3 @@
-import useNewsList from "@/src/hooks/useNewsList";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import Button from "../../sharedComponents/Button";
@@ -25,12 +24,11 @@ const ActionIcon = ({ toggleButtonRef, ...props }) => {
   );
 };
 
-const TableAction = ({ news, page, pageSize }) => {
+const TableAction = ({ news, mutate }) => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const toggleButtonRef = useRef();
   const menuActionsRef = useRef();
-  const { mutate } = useNewsList(page, pageSize);
 
   const id = news._id.toString();
 

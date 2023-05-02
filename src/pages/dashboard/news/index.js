@@ -8,12 +8,10 @@ import useNewsList from "@/src/hooks/useNewsList";
 import Pagination from "@/src/components/sharedComponents/Pagination";
 import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
 
-const DEFAULT_PAGE_SIZE = 5;
 function News(props) {
   const router = useRouter();
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
-  const { data, isLoading } = useNewsList(page, pageSize);
+  const { data, isLoading, page, setPage, pageSize, setPageSize, mutate } =
+    useNewsList();
 
   const goToCreateANewPost = () => {
     router.push("/dashboard/news/create");
@@ -30,7 +28,7 @@ function News(props) {
       />
       {data.data.length > 0 ? (
         <>
-          <NewsList newList={data.data} page={page} pageSize={pageSize} />
+          <NewsList newList={data.data} mutate={mutate} pageSize={pageSize} />
           <div className="mt-4">
             <Pagination
               page={page}

@@ -1,9 +1,8 @@
 import React from "react";
 import TableAction from "./TableAction";
-import { displayDate } from "@/src/utils/displayDate";
 import AdminBadge from "./AdminBadge";
 
-function UsersList({ usersList, page, pageSize }) {
+function UsersList({ usersList, mutate, pageSize }) {
   const emptyRows = pageSize - usersList.length;
 
   return (
@@ -48,8 +47,7 @@ function UsersList({ usersList, page, pageSize }) {
               <AdminBadge isAdmin={user.isAdmin} />
             </td>
             <td className="border border-gray-400 px-6 py-4 font-medium whitespace-nowrap text-white">
-              {/* pass page and pageSize to persit useSWR mutate bind key depends on page and pageSize */}
-              <TableAction user={user} page={page} pageSize={pageSize} />
+              <TableAction user={user} mutate={mutate} />
             </td>
           </tr>
         ))}

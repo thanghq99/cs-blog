@@ -3,14 +3,14 @@ import NewsItem from "@/src/components/news/NewsItem";
 import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
 import Pagination from "@/src/components/sharedComponents/Pagination";
 import useNewsList from "@/src/hooks/useNewsList";
-import React, { useState } from "react";
+import React from "react";
 
+const DEFAULT_PAGE = 0;
 const DEFAULT_PAGE_SIZE = 15;
 const PUBLISH_STATUS = true;
 function News() {
-  const [page, setPage] = useState(0);
-  const { data, isLoading } = useNewsList(
-    page,
+  const { data, isLoading, page, setPage } = useNewsList(
+    DEFAULT_PAGE,
     DEFAULT_PAGE_SIZE,
     PUBLISH_STATUS
   );

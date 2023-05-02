@@ -7,13 +7,10 @@ import PageHeader from "@/src/components/sharedComponents/PageHeader";
 import useUpdatesList from "@/src/hooks/useUpdatesList";
 import Pagination from "@/src/components/sharedComponents/Pagination";
 import LoadingSection from "@/src/components/sharedComponents/LoadingSection";
-
-const DEFAULT_PAGE_SIZE = 5;
 function Updates(props) {
   const router = useRouter();
-  const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(DEFAULT_PAGE_SIZE);
-  const { data, isLoading } = useUpdatesList(page, pageSize);
+  const { data, isLoading, page, pageSize, setPage, setPageSize, mutate } =
+    useUpdatesList();
 
   const goToCreateANewUpdate = () => {
     router.push("/dashboard/updates/create");
@@ -32,7 +29,7 @@ function Updates(props) {
         <>
           <UpdatesList
             updatesList={data.data}
-            page={page}
+            mutate={mutate}
             pageSize={pageSize}
           />
           <div className="mt-4">
