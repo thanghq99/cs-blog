@@ -21,13 +21,13 @@ function UsersList({ usersList, mutate, pageSize }) {
           </th>
           <th
             scope="col"
-            className="px-6 py-4 hidden md:table-cell w-1/4 lg:w-1/6 border border-gray-400 text-lg"
+            className="px-6 py-4 hidden md:table-cell w-1/4 lg:w-1/6 border border-gray-400 text-lg text-center"
           >
             Role
           </th>
           <th
             scope="col"
-            className="px-6 py-4 w-1/4 lg:w-2/12 xl:1/12 border border-gray-400 text-center"
+            className="px-6 py-4 w-1/4 lg:w-2/12 xl:1/12 border border-gray-400 text-lg text-center"
           >
             Action
           </th>

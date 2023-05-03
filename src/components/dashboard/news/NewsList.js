@@ -15,13 +15,13 @@ function NewsList({ newList, mutate, pageSize }) {
           </th>
           <th
             scope="col"
-            className="px-6 py-4 w-1/4 lg:w-1/5 border border-gray-400 text-center hidden md:table-cell"
+            className="px-6 py-4 w-1/4 lg:w-1/5 border border-gray-400 text-center hidden md:table-cell text-lg"
           >
             Pulishing status
           </th>
           <th
             scope="col"
-            className="px-6 py-4 w-1/4 md:w-1/6 lg:w-2/12 xl:w-1/12 border border-gray-400 text-center "
+            className="px-6 py-4 w-1/4 md:w-1/6 lg:w-2/12 xl:w-1/12 border border-gray-400 text-center text-lg"
           >
             Action
           </th>
