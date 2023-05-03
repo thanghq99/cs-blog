@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 import LoadingSection from "../../sharedComponents/LoadingSection";
 
 function DashboardLayout({ children }) {
-  const { data, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const lastPathPartition = getLastPathPartition(router.pathname);
   const title =

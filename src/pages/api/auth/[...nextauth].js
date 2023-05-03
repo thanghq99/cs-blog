@@ -13,12 +13,7 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
-        console.log(
-          `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/sign-in-by-email`
-        );
         const res = await fetch(
-          //PLEASE DO NOT THE CODE (please do not the cat):
-          // "http://localhost:3000/api/auth/sign-in-by-email", I HARD CODED THIS TO LOCALHOST AND WASTED HOURS TO FIND IT OUT
           `${process.env.NEXT_PUBLIC_SITE_URL}/api/auth/sign-in-by-email`,
           {
             method: "POST",

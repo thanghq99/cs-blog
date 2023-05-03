@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     case "GET":
       res
         .status(400)
-        .json({ success: false, data: "Very good, you won the game." });
+        .json({ success: false, message: "Very good, you won the game." });
       break;
     case "POST":
       const { email } = req.body;
@@ -22,7 +22,10 @@ export default async function handler(req, res) {
         if (!foundUser)
           return res
             .status(404)
-            .json({ success: false, data: "No user with given email found." });
+            .json({
+              success: false,
+              message: "No user with given email found.",
+            });
         const signInToken = jwt.sign(
           { email: email, requestedAt: Date.now() },
           process.env.EMAIL_SECRET,
@@ -31,7 +34,9 @@ export default async function handler(req, res) {
           }
         );
         await sendSignInToken(email, signInToken);
-        res.status(200).json({ success: true, data: "Email sent." });
+        res
+          .status(200)
+          .json({ success: true, message: `An email was sent to ${email}` });
       } catch (error) {
         res.status(400).json({ success: false, error: error });
       }

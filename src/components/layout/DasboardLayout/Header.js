@@ -21,6 +21,7 @@ const NameDisplayer = ({ name }) => <p className="mr-2">Welcome, {name}!</p>;
 export default function Header() {
   const { open } = useSidebarContext();
   const { data } = useSession();
+  console.log(data);
   return (
     <div
       className={`fixed right-0 top-0 z-40 bg-[#090d13] h-16 text-white flex justify-between items-center px-4 ${

@@ -15,13 +15,10 @@ export default async function handler(req, res) {
         .json({ success: false, data: "Very good, you won the game, again." });
       break;
     case "POST":
-      const { email, token } = req.body;
+      const { token } = req.body;
       try {
         const decode = jwt.verify(token, process.env.EMAIL_SECRET);
-        console.log(decode);
         const foundUser = await Users.findOne({ email: decode.email });
-        //email must be the same email that requested the token
-        //user deleted after getting token and before sign in with that token
         if (!foundUser)
           return res
             .status(404)
