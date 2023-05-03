@@ -87,29 +87,35 @@ export default function UserForm({ type, defaultValues, id }) {
       />
       <form>
         <div className="text-black mb-3 flex flex-col space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
-          <h2 className="text-lg text-white">Email</h2>
-          <input
-            {...register("email")}
-            className="w-full h-10 px-4 py-2 rounded-none md:block focus:outline-custom"
-            placeholder="Email"
-          />
-          <ErrorMessage message={errors?.email?.message} />
-          <h2 className="text-lg text-white">Alias</h2>
-          <input
-            {...register("alias")}
-            className="w-full h-10 px-4 py-2 rounded-none md:block focus:outline-custom"
-            placeholder="Alias"
-          />
-          <ErrorMessage message={errors?.alias?.message} />
-          <h2 className="text-lg text-white">Is admin?</h2>
-          <select
-            {...register("isAdmin")}
-            className="w-full h-10 px-4 py-2 rounded-none leading-6 md:block focus:outline-custom"
-          >
-            <option value={true}>Yes</option>
-            <option value={false}>Yesn't</option>
-          </select>
-          <ErrorMessage message={errors?.isAdmin?.message} />
+          <div className="w-full">
+            <h2 className="text-lg text-white">Email</h2>
+            <input
+              {...register("email")}
+              className="w-full h-10 px-4 py-2 rounded-none md:block focus:outline-custom"
+              placeholder="Email"
+            />
+            <ErrorMessage message={errors?.email?.message} />
+          </div>
+          <div className="w-full">
+            <h2 className="text-lg text-white">Alias</h2>
+            <input
+              {...register("alias")}
+              className="w-full h-10 px-4 py-2 rounded-none md:block focus:outline-custom"
+              placeholder="Alias"
+            />
+            <ErrorMessage message={errors?.alias?.message} />
+          </div>
+          <div className="w-full">
+            <h2 className="text-lg text-white">Is admin?</h2>
+            <select
+              {...register("isAdmin")}
+              className="w-full h-10 px-4 py-2 rounded-none leading-6 md:block focus:outline-custom"
+            >
+              <option value={true}>Yes</option>
+              <option value={false}>Yesn't</option>
+            </select>
+            <ErrorMessage message={errors?.isAdmin?.message} />
+          </div>
         </div>
       </form>
     </>
